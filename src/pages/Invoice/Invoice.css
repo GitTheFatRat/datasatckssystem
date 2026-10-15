@@ -1,0 +1,130 @@
+.invoice-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.invoice-header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.invoice-card {
+  padding: 36px;
+}
+
+.invoice-meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 32px;
+}
+
+.invoice-tag {
+  display: inline-block;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.invoice-party-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.invoice-party-address {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.invoice-dates-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.invoice-date-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.invoice-date-label {
+  color: var(--text-muted);
+}
+
+.invoice-date-val {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.invoice-table-wrapper {
+  margin-bottom: 32px;
+}
+
+.invoice-item-desc {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.invoice-summary-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.invoice-payment-info {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.invoice-totals {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.invoice-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.invoice-discount {
+  color: var(--color-danger);
+}
+
+.invoice-grand-total {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 6px;
+}
+
+@media print {
+  .sidebar, .header, .invoice-header-actions {
+    display: none !important;
+  }
+  .app-container {
+    background: #fff;
+    color: #000;
+  }
+}

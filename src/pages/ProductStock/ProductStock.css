@@ -1,0 +1,18 @@
+.stock-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.stock-search {
+  display: flex; align-items: center; gap: 8px;
+  background-color: var(--bg-input); border-radius: var(--radius-sm);
+  padding: 8px 14px; color: var(--text-muted); min-width: 250px;
+}
+.stock-product-img { width: 48px; height: 48px; border-radius: var(--radius-sm); object-fit: cover; }
+.stock-product-name { font-weight: 600; color: var(--text-primary); }
+.stock-colors { display: flex; gap: 6px; }
+.stock-color-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--border-color); cursor: pointer; transition: transform var(--transition-fast); }
+.stock-color-dot:hover { transform: scale(1.2); }
+.stock-actions { display: flex; gap: 8px; }
+.stock-action-btn {
+  width: 32px; height: 32px; border-radius: var(--radius-sm);
+  background-color: var(--bg-input); display: flex; align-items: center; justify-content: center;
+  font-size: 14px; transition: background-color var(--transition-fast);
+}
+.stock-action-btn:hover { background-color: var(--bg-hover); }

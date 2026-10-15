@@ -1,0 +1,65 @@
+.table-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.table-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.table-member-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.table-progress-bar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 120px;
+}
+
+.table-progress-bar {
+  height: 6px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+.table-progress-text {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.table-row-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.table-action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-input);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.table-action-btn:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.table-action-btn--delete:hover {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+}
