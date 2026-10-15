@@ -3,9 +3,9 @@ import { Upload, Check } from 'lucide-react';
 import './Settings.css';
 
 export default function Settings() {
-  const [siteName, setSiteName] = useState('DashStack Admin');
+  const [siteName, setSiteName] = useState('DashStack');
   const [copyRight, setCopyRight] = useState('© 2024 DashStack. All rights reserved.');
-  const [seoTitle, setSeoTitle] = useState('DashStack - Modern Clean Admin Dashboard');
+  const [seoTitle, setSeoTitle] = useState('DashStack');
   const [seoDescription, setSeoDescription] = useState('Modern, responsive admin dashboard built for enterprise web applications.');
   const [seoKeywords, setSeoKeywords] = useState('dashboard, admin, react, analytics, dark theme');
   const [isSaved, setIsSaved] = useState(false);
