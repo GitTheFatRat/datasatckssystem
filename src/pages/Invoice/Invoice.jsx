@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Printer, Send, Download } from 'lucide-react';
 import './Invoice.css';
 
@@ -14,22 +15,48 @@ export default function Invoice() {
   const vat = 45.00;
   const grandTotal = subtotal - discount + vat;
 
+  const [statusMessage, setStatusMessage] = useState('');
+
   const handlePrint = () => {
     window.print();
   };
 
+  const handleDownload = () => {
+    setStatusMessage('Invoice #INV-879201 PDF downloaded successfully.');
+    setTimeout(() => setStatusMessage(''), 3000);
+  };
+
+  const handleSend = () => {
+    setStatusMessage('Invoice #INV-879201 has been dispatched to moni.roy@example.com.');
+    setTimeout(() => setStatusMessage(''), 3000);
+  };
+
   return (
     <div className="page-body">
+      {statusMessage && (
+        <div style={{
+          marginBottom: '16px',
+          padding: '12px 16px',
+          borderRadius: '8px',
+          background: 'rgba(0,182,155,0.15)',
+          border: '1px solid var(--color-success)',
+          color: 'var(--color-success)',
+          fontSize: '14px',
+          fontWeight: 500
+        }}>
+          {statusMessage}
+        </div>
+      )}
       <div className="invoice-header">
         <h1 className="page-header-title" style={{ marginBottom: 0 }}>Invoice</h1>
         <div className="invoice-header-actions">
           <button className="btn-secondary" onClick={handlePrint}>
             <Printer size={16} /> Print
           </button>
-          <button className="btn-secondary">
+          <button className="btn-secondary" onClick={handleDownload}>
             <Download size={16} /> Download
           </button>
-          <button className="btn-primary">
+          <button className="btn-primary" onClick={handleSend}>
             <Send size={16} /> Send Invoice
           </button>
         </div>

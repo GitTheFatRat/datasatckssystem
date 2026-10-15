@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Filter, RotateCcw, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { Filter, RotateCcw, ChevronLeft, ChevronRight, X, Trash2 } from 'lucide-react';
 import { initialOrders } from '../../services/mockData';
 import './Orders.css';
 
@@ -15,7 +15,7 @@ const statusClassMap = {
 };
 
 export default function Orders() {
-  const [orders] = useState(initialOrders);
+  const [orders, setOrders] = useState(initialOrders);
   const [filterDate, setFilterDate] = useState('');
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [selectedStatuses, setSelectedStatuses] = useState([]);
@@ -42,7 +42,12 @@ export default function Orders() {
     setSelectedStatuses([]);
   };
 
+  const handleDeleteOrder = (id) => {
+    setOrders((prev) => prev.filter((o) => o.id !== id));
+  };
+
   const filteredOrders = orders.filter((order) => {
+    if (filterDate && !order.date.toLowerCase().includes(filterDate.toLowerCase())) return false;
     if (selectedTypes.length && !selectedTypes.includes(order.type)) return false;
     if (selectedStatuses.length && !selectedStatuses.includes(order.status)) return false;
     return true;
@@ -157,6 +162,7 @@ export default function Orders() {
               <th>DATE</th>
               <th>TYPE</th>
               <th>STATUS</th>
+              <th style={{ textAlign: 'center' }}>ACTION</th>
             </tr>
           </thead>
           <tbody>
@@ -171,6 +177,16 @@ export default function Orders() {
                   <span className={`badge-status ${statusClassMap[order.status]}`}>
                     {order.status}
                   </span>
+                </td>
+                <td style={{ textAlign: 'center' }}>
+                  <button
+                    className="table-action-btn table-action-btn--delete"
+                    onClick={() => handleDeleteOrder(order.id)}
+                    title="Delete order"
+                    style={{ margin: '0 auto' }}
+                  >
+                    <Trash2 size={14} />
+                  </button>
                 </td>
               </tr>
             ))}

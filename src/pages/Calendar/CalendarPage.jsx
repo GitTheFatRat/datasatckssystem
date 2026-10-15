@@ -18,6 +18,7 @@ const getFirstDayOfMonth = (year, month) => {
 };
 
 export default function CalendarPage() {
+  const [eventList, setEventList] = useState(events);
   const [currentMonth, setCurrentMonth] = useState(9);
   const [currentYear, setCurrentYear] = useState(2019);
   const [showAddEvent, setShowAddEvent] = useState(false);
@@ -42,6 +43,16 @@ export default function CalendarPage() {
 
   const handleSubmitEvent = (e) => {
     e.preventDefault();
+    if (!newEvent.name.trim()) return;
+    const created = {
+      id: Date.now(),
+      title: newEvent.name,
+      time: newEvent.time || '10:00 AM',
+      date: newEvent.date || `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-15`,
+      location: newEvent.address || 'Company HQ',
+      color: '#4880FF',
+    };
+    setEventList((prev) => [created, ...prev]);
     setShowAddEvent(false);
     setNewEvent({ name: '', time: '', date: '', address: '', contactNumber: '' });
   };
@@ -59,7 +70,7 @@ export default function CalendarPage() {
         {/* Sidebar events */}
         <div className="calendar-events-sidebar">
           <h3 className="calendar-events-title">You are going to</h3>
-          {events.map((event) => (
+          {eventList.map((event) => (
             <div key={event.id} className="calendar-event-card">
               <div className="calendar-event-dot" style={{ backgroundColor: event.color }}></div>
               <div>

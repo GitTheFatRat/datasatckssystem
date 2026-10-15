@@ -124,3 +124,48 @@
 .inbox-reply-input::placeholder { color: var(--text-placeholder); }
 .inbox-reply-actions { display: flex; gap: 4px; align-items: center; }
 .inbox-send-btn { padding: 8px 16px; }
+
+/* Chat Thread */
+.inbox-chat-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+  padding: 10px 0;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.inbox-chat-bubble {
+  max-width: 70%;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  line-height: 1.5;
+  animation: fadeIn 0.2s ease;
+}
+
+.inbox-chat-bubble--them {
+  align-self: flex-start;
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  border-bottom-left-radius: 2px;
+}
+
+.inbox-chat-bubble--me {
+  align-self: flex-end;
+  background-color: var(--color-primary);
+  color: #fff;
+  border-bottom-right-radius: 2px;
+}
+
+.inbox-chat-text {
+  font-size: 14px;
+}
+
+.inbox-chat-time {
+  font-size: 11px;
+  opacity: 0.7;
+  margin-top: 4px;
+  text-align: right;
+}
+

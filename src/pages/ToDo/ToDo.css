@@ -2,7 +2,7 @@
 .todo-add-input-wrapper { margin-bottom: 20px; }
 .todo-add-input { max-width: 400px; background-color: var(--color-primary-light); border: 1px solid var(--color-primary); }
 
-.todo-list { display: flex; flex-direction: column; gap: 2px; }
+.todo-list { display: flex; flex-direction: column; gap: 4px; }
 
 .todo-item {
   display: flex; align-items: center; gap: 14px;
@@ -10,20 +10,46 @@
   background-color: var(--bg-card);
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-light);
-  transition: background-color var(--transition-fast);
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 .todo-item:hover { background-color: var(--bg-card-hover); }
+.todo-item--selected {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(72, 128, 255, 0.3);
+}
 .todo-item--done { opacity: 0.7; }
 
-.todo-check { flex-shrink: 0; }
+.todo-check { flex-shrink: 0; background: none; border: none; cursor: pointer; }
 .todo-check-icon { color: var(--text-muted); }
 .todo-check-icon--done { color: var(--color-primary); }
+.todo-check-icon--selected { color: #fff !important; }
 
 .todo-title { flex: 1; font-size: 15px; color: var(--text-primary); font-weight: 500; }
 .todo-title--done { text-decoration: line-through; color: var(--text-muted); }
+.todo-title--selected { color: #fff !important; font-weight: 600; }
 
-.todo-star { flex-shrink: 0; transition: transform var(--transition-fast); }
+.todo-star { flex-shrink: 0; background: none; border: none; cursor: pointer; transition: transform var(--transition-fast); }
 .todo-star:hover { transform: scale(1.2); }
 
-.todo-more { flex-shrink: 0; color: var(--text-muted); }
-.todo-more:hover { color: var(--text-primary); }
+.todo-delete-btn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--radius-xs);
+  transition: color var(--transition-fast);
+}
+.todo-item--selected .todo-delete-btn {
+  color: rgba(255, 255, 255, 0.85);
+}
+.todo-delete-btn:hover {
+  color: var(--color-danger);
+}
+.todo-item--selected .todo-delete-btn:hover {
+  color: #fff;
+  background-color: rgba(239, 56, 38, 0.4);
+}

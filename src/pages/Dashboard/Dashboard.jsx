@@ -6,7 +6,7 @@ import {
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import MetricCard from '../../components/widgets/MetricCard';
 import {
-  initialMetrics, salesDetailsData, revenueComparisonData
+  initialMetrics, salesDetailsData, revenueComparisonData, initialProducts
 } from '../../services/mockData';
 import './Dashboard.css';
 
@@ -44,6 +44,17 @@ const CustomTooltip = ({ active, payload, label }) => {
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview');
   const [salesPeriod, setSalesPeriod] = useState('October');
+  const [featuredIndex, setFeaturedIndex] = useState(0);
+
+  const currentFeatured = initialProducts[featuredIndex] || initialProducts[0];
+
+  const nextFeatured = () => {
+    setFeaturedIndex((prev) => (prev + 1) % initialProducts.length);
+  };
+
+  const prevFeatured = () => {
+    setFeaturedIndex((prev) => (prev - 1 + initialProducts.length) % initialProducts.length);
+  };
 
   return (
     <div className="page-body">
@@ -268,23 +279,23 @@ export default function Dashboard() {
             <div className="dash-card featured-product-card">
               <h2 className="dashboard-chart-title">Featured Product</h2>
               <div className="featured-product-content">
-                <button className="featured-arrow-btn">
+                <button className="featured-arrow-btn" onClick={prevFeatured} title="Previous product">
                   <ChevronLeft size={18} />
                 </button>
                 <div className="featured-product-image-box">
                   <img
-                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&auto=format&fit=crop&q=80"
-                    alt="Beats Headphone"
+                    src={currentFeatured.image}
+                    alt={currentFeatured.name}
                     className="featured-product-img"
                   />
                 </div>
-                <button className="featured-arrow-btn">
+                <button className="featured-arrow-btn" onClick={nextFeatured} title="Next product">
                   <ChevronRight size={18} />
                 </button>
               </div>
               <div className="featured-product-meta">
-                <h4 className="featured-title">Beats Headphone 2019</h4>
-                <div className="featured-price">$89.00</div>
+                <h4 className="featured-title">{currentFeatured.name}</h4>
+                <div className="featured-price">${currentFeatured.price.toFixed(2)}</div>
               </div>
             </div>
 
